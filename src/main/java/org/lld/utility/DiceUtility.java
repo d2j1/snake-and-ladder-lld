@@ -2,7 +2,7 @@ package org.lld.utility;
 
 public class DiceUtility {
 
-    public int roll( int noOfDices){
+    public static int roll( int noOfDices){
 
         int sum =0;
 

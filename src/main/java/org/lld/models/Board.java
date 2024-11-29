@@ -14,6 +14,7 @@ public class Board {
         this.cellCount = this.dimension * this.dimension;
         // add n snakes and add n ladder to the board
 
+        this.addSnakesAndLadders();
 
 
     }
@@ -58,7 +59,56 @@ public class Board {
 
     }
 
-    private boolean hasSnakeOrLadder( int index) {
+    public void print(){
+
+        int tempCellCount = cellCount;
+        int index;
+        for (int row = 0; row < dimension; row++) {
+            // Print left to right if even row, right to left if odd
+            if (row % 2 == 0) {
+                for (int col = 0; col < dimension; col++) {
+                    index = tempCellCount;
+
+                    System.out.printf("%4d", tempCellCount);
+
+                    if (hasSnakeOrLadder(index)) {
+                        BoardEntity entity = snakeAndLadderMap.get(index);
+                        entity.printEntity();
+                    }
+
+                    tempCellCount-=1;
+                }
+            } else {
+                int temp = tempCellCount - dimension+ 1;
+                for (int col = 0; col < dimension; col++) {
+
+                    System.out.printf("%4d", temp);
+
+                    if (hasSnakeOrLadder(temp)) {
+                        BoardEntity entity = snakeAndLadderMap.get(temp);
+                        entity.printEntity();
+                    }
+
+                    temp+=1;
+                }
+                tempCellCount -= dimension;
+            }
+            System.out.println(); // New line for each row
+        }
+
+
+
+    }
+
+    public int getCellCount() {
+        return cellCount;
+    }
+
+    public void setCellCount(int cellCount) {
+        this.cellCount = cellCount;
+    }
+
+    public  boolean hasSnakeOrLadder(int index) {
         return snakeAndLadderMap.containsKey(index);
     }
 

@@ -23,6 +23,6 @@ public class Main {
         players.add(p2);
 
         Game game = new Game(noOfDice, dimension, players);
-
+        game.start();
     }
 }
