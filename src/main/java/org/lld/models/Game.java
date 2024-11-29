@@ -1,5 +1,6 @@
 package org.lld.models;
 
+import java.util.LinkedList;
 import java.util.Queue;
 
 public class Game {
@@ -10,12 +11,18 @@ public class Game {
     private int numberOfDices;
     private int dimension;
 
-    public Game(Board board, Queue<Player> players, Queue<Player> winners, int numberOfDices, int dimension) {
-        this.board = board;
+    public Game(int numberOfDices, int dimension, Queue<Player> players) {
         this.players = players;
-        this.winners = winners;
         this.numberOfDices = numberOfDices;
         this.dimension = dimension;
+        this.board = new Board(this.dimension);
+        this.winners = new LinkedList<>();
+
+    }
+
+    public void start(){
+
+
     }
 
     public Board getBoard() {
